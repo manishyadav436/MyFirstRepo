@@ -1,0 +1,26 @@
+# Required to run your project under the correct environment.
+language: php
+
+# Versions of PHP you want your project run with.
+php:
+  - '5.6'
+  - '7.0'
+  - nightly
+
+# SQLite3 database
+test:
+  adapter: sqlite3
+  database: ":memory:"
+  timeout: 500
+
+# Commands to be run before your environment runs.
+before_script:
+  - composer install --prefer-source --no-interaction
+
+# Commands you want to run that will verify your build.
+script: phpunit --configuration phpunit.xml
+
+# Customize when the notification emails are sent.
+notifications:
+    on_success: never
+    on_failure: never
